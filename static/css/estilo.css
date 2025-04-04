@@ -1,0 +1,15 @@
+body {
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 1);
+}
+#cobrinha {
+    border: 5px solid #000;
+}
+input::placeholder {
+    color: black !important;
+}
+.ajuda {
+    z-index: 10;
+}
+.semtempo-container {
+    z-index: 20;
+}

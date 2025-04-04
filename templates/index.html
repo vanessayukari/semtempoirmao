@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>semtempoirmao</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+</head>
+<body class="font-mono flex items-center justify-center min-h-screen bg-[#536648] relative">
+    <!-- Sobre -->
+    <div class="ajuda group fixed top-0 left-0 w-full text-[#536648] bg-black py-3 px-4 flex items-center justify-between cursor-pointer z-50">
+        <span class="text-lg font-bold">ajuda</span>
+        <span class="text-xl transition-transform duration-300 group-hover:rotate-180" id="arrow">↓</span>
+        <div class="hidden group-hover:block absolute text-[#536648] bg-black p-4 w-full top-full left-0">
+            <p>Cole o link do vídeo do YouTube e obtenha detalhes do conteúdo em texto. Enquanto o resumo é gerado, você pode jogar um pouquinho :)</p>
+        </div>
+    </div>
+    <!-- Logo -->
+    <div class="semtempo-container mx-auto pt-[170px] p-8">
+        <div class="flex justify-center mb-6">
+            <img src="./static/img/logo.png" alt="Logo" class="h-10">
+        </div>
+        <h2 class="text-2xl mb-6 text-center font-bold"><a href="https://github.com/vanessayukari">por vanessayukari</a></h2>
+        <!-- Forms -->
+        <form id="video" method="POST" action="/analise" class="border border-4 border-black p-6">
+            <label for="url" class="block text-lg mb-2">URL do vídeo:</label>
+            <input type="text" id="url" name="url" required class="w-full p-3 border border-2 border-black focus:ring-2 focus:outline-none mb-4" style="background-color: #536648" placeholder="Cole o link do vídeo aqui">
+            <button type="submit" class="w-full py-3 font-bold bg-black hover:bg-neutral-950" style="color: #536648">Analisar</button>
+        </form>
+        <!-- Joguinho -->
+        <div id="cobrinha-container" class="w-full flex flex-col justify-center items-center mt-6 hidden">
+            <canvas width="400" height="400" id="cobrinha"></canvas>
+            <h2>Carregando resumo...</h2>
+        </div>
+        <!-- Resultado -->
+        <div id="resultado" class="mt-6 p-6 mb-[150px] hidden border border-4 border-black">
+            <h2 class="text-3xl mb-4">Análise do conteúdo:</h2>
+            <p id="texto-resultado" class="text-lg"></p>
+            <!-- Botão para fazer nova busca -->
+            <button id="nova-busca" class="mt-4 w-full py-3 font-bold bg-black hover:bg-neutral-950" style="color: #536648" onclick="resetPage()">Nova Busca</button>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
